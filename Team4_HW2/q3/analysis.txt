@@ -1,0 +1,47 @@
+==========================================
+SLURM_JOB_ID = 80170
+SLURM_NODELIST = node06
+SLURM_JOB_GPUS = 
+==========================================
+Loading MPI module...
+Compiling Bitonic Sort & Generator...
+Compilation successful. Running benchmarks...
+=============================================
+---------------------------------------------
+Testing Input Size N = 1024
+Generating input.txt...
+Generated input.txt with 1024 elements successfully.
+---------------------------------------------
+P=1 | N=1024 | Status: SUCCESS | Total: 0.000162687s | Comp: 0.000154501s | Comm: 5.145e-06s | Seq (T1): 0.000136452s | Speedup: 0.838739 | Efficiency: 0.838739
+P=2 | N=1024 | Status: SUCCESS | Total: 0.000171945s | Comp: 0.000144417s | Comm: 2.6216e-05s | Seq (T1): 0.000140929s | Speedup: 0.819617 | Efficiency: 0.409808
+P=4 | N=1024 | Status: SUCCESS | Total: 0.000169378s | Comp: 0.00011861s | Comm: 4.878e-05s | Seq (T1): 0.000144463s | Speedup: 0.852903 | Efficiency: 0.213226
+P=8 | N=1024 | Status: SUCCESS | Total: 0.000202104s | Comp: 0.000102073s | Comm: 9.8131e-05s | Seq (T1): 0.000173788s | Speedup: 0.859894 | Efficiency: 0.107487
+---------------------------------------------
+Testing Input Size N = 16384
+Generating input.txt...
+Generated input.txt with 16384 elements successfully.
+---------------------------------------------
+P=1 | N=16384 | Status: SUCCESS | Total: 0.00361035s | Comp: 0.00358037s | Comm: 8.444e-06s | Seq (T1): 0.00362462s | Speedup: 1.00395 | Efficiency: 1.00395
+P=2 | N=16384 | Status: SUCCESS | Total: 0.0029882s | Comp: 0.00289221s | Comm: 7.1661e-05s | Seq (T1): 0.00363899s | Speedup: 1.21779 | Efficiency: 0.608893
+P=4 | N=16384 | Status: SUCCESS | Total: 0.00248239s | Comp: 0.00231352s | Comm: 0.000143616s | Seq (T1): 0.00365808s | Speedup: 1.47361 | Efficiency: 0.368403
+P=8 | N=16384 | Status: SUCCESS | Total: 0.00328563s | Comp: 0.0029781s | Comm: 0.000278467s | Seq (T1): 0.00371864s | Speedup: 1.13179 | Efficiency: 0.141473
+---------------------------------------------
+Testing Input Size N = 65536
+Generating input.txt...
+Generated input.txt with 65536 elements successfully.
+---------------------------------------------
+P=1 | N=65536 | Status: SUCCESS | Total: 0.0182014s | Comp: 0.0180918s | Comm: 1.9057e-05s | Seq (T1): 0.01806s | Speedup: 0.992229 | Efficiency: 0.992229
+P=2 | N=65536 | Status: SUCCESS | Total: 0.0145537s | Comp: 0.01425s | Comm: 0.000168041s | Seq (T1): 0.0182654s | Speedup: 1.25503 | Efficiency: 0.627517
+P=4 | N=65536 | Status: SUCCESS | Total: 0.0218733s | Comp: 0.0214743s | Comm: 0.00025006s | Seq (T1): 0.0185339s | Speedup: 0.847328 | Efficiency: 0.211832
+P=8 | N=65536 | Status: SUCCESS | Total: 0.0165405s | Comp: 0.0159101s | Comm: 0.000505822s | Seq (T1): 0.0186856s | Speedup: 1.12969 | Efficiency: 0.141211
+---------------------------------------------
+Testing Input Size N = 131072
+Generating input.txt...
+Generated input.txt with 131072 elements successfully.
+---------------------------------------------
+P=1 | N=131072 | Status: SUCCESS | Total: 0.0416173s | Comp: 0.0413883s | Comm: 5.0425e-05s | Seq (T1): 0.0403311s | Speedup: 0.969093 | Efficiency: 0.969093
+P=2 | N=131072 | Status: SUCCESS | Total: 0.0324669s | Comp: 0.0319981s | Comm: 0.000210997s | Seq (T1): 0.0402498s | Speedup: 1.23972 | Efficiency: 0.61986
+P=4 | N=131072 | Status: SUCCESS | Total: 0.0495171s | Comp: 0.0263615s | Comm: 0.0228965s | Seq (T1): 0.0400423s | Speedup: 0.808656 | Efficiency: 0.202164
+P=8 | N=131072 | Status: SUCCESS | Total: 0.0378354s | Comp: 0.0368583s | Comm: 0.000735132s | Seq (T1): 0.0419789s | Speedup: 1.10951 | Efficiency: 0.138689
+=============================================
+All tests complete!

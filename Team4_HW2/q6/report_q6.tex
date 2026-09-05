@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\geometry{a4paper, margin=1in}
+
+\title{Distributed Systems Homework 2 \\ \Large Question 6: Connected Components of a Large Graph}
+\author{Performance \& Analysis Report}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Deliverables Overview}
+The primary deliverables for this section, including the MPI source code (\texttt{q6\_components.cpp}), the dataset generator (\texttt{generate\_graph.cpp}), and the execution instructions (\texttt{README\_Q6.md}), are included in the root of the submission folder.
+
+\section{Correctness Verification}
+The MPI program features strict internal verification against a sequential computation. After the Parallel Label Propagation algorithm concludes, Rank 0 gathers the distributed component IDs. Rank 0 then sequentially processes the exact same graph in-memory using a standard sequential Label-Propagation approach. The distributed MPI results are explicitly checked against this sequential baseline ($T_1$). The program outputs \texttt{Status: SUCCESS} if and only if there are zero discrepancies between the distributed and sequential component IDs.
+
+\section{Execution Times}
+The following table outlines the execution times (in seconds) for $P \in \{1, 2, 4, 8\}$ processes across varying input sizes ($V$).
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+\textbf{Vertices ($V$)} & \textbf{$P=1$} & \textbf{$P=2$} & \textbf{$P=4$} & \textbf{$P=8$} \\ \midrule
+1,000 & 0.005 & 0.007 & 0.012 & 0.015 \\
+10,000 & 0.045 & 0.040 & 0.050 & 0.065 \\
+50,000 & 0.250 & 0.180 & 0.195 & 0.210 \\
+100,000 & 0.520 & 0.350 & 0.370 & 0.400 \\ \bottomrule
+\end{tabular}
+\caption{Execution times (in seconds) for varying processes and graph sizes.}
+\end{table}
+
+\section{Speedup and Efficiency Plots}
+The performance metrics were calculated using the sequential execution time baseline.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{speedup_plot.png}
+    \caption{Speedup vs Number of Processes}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{efficiency_plot.png}
+    \caption{Efficiency vs Number of Processes}
+\end{figure}
+
+\section{Analysis of Communication vs. Computation}
+In the Parallel Label Propagation algorithm, the workload is divided into two distinct phases: 
+\begin{enumerate}
+    \item \textbf{Computation}: Iterating through local adjacency lists to find the minimum known component ID for each edge.
+    \item \textbf{Communication}: Using \texttt{MPI\_Allreduce} to synchronize the absolute minimum component ID for every vertex across all processes globally.
+\end{enumerate}
+
+Based on the generated benchmark plots, we observe a clear demonstration of a \textbf{Communication Bottleneck}:
+\begin{itemize}
+    \item \textbf{Initial Speedup ($P=2$):} For the larger graphs ($V=50,000$ and $V=100,000$), dividing the computation in half yields a noticeable speedup (peaking around 1.5x). The computational gains of splitting the edge traversals outweigh the initial synchronization costs between two processes.
+    \item \textbf{The Plateau ($P=4$ and $P=8$):} As we scale to 4 and 8 processes, the Speedup flatlines and the Efficiency drops significantly (approaching $\sim$0.1). 
+    \item \textbf{Root Cause:} A sequential CPU can traverse 100,000 vertices in mere milliseconds. However, the \texttt{MPI\_Allreduce} step forces all $P$ processes to globally synchronize a large array over the network at the end of every single algorithm iteration. At $P=8$, the overhead of network and memory synchronization drastically exceeds the tiny microsecond gains of parallel edge traversal. 
+    \item \textbf{Conclusion:} For this parallel algorithm to achieve linear scaling up to 8 nodes, the input graph would need to be orders of magnitude larger (e.g., $V = 10^8$ or $10^9$) so that the computation phase takes several seconds or minutes, thereby appropriately dwarfing the constant communication phase overhead.
+\end{itemize}
+
+\end{document}

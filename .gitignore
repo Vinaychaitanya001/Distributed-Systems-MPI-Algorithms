@@ -1,0 +1,17 @@
+# Ignore large ZIP archives (will break GitHub's 100MB limit)
+*.zip
+
+# Ignore massive generated datasets
+q8/benchmark/data/*.txt
+
+# Ignore compiled executables
+q3/bitonic
+q3/generate_array
+q6/q6_components
+q6/generate_graph
+q8/benchmark/weather_mpi
+q8/benchmark/weather_seq
+
+# Ignore logs
+*.log
+*.err

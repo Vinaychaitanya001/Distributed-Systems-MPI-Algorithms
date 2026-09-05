@@ -1,0 +1,16 @@
+P=1 | V=1000 | Iterations=2 | Correct=YES | MPI Time=7.2554e-05s | Seq Time=6.7113e-05s | Speedup=0.925008
+P=2 | V=1000 | Iterations=2 | Correct=YES | MPI Time=7.5881e-05s | Seq Time=7.3788e-05s | Speedup=0.972417
+P=4 | V=1000 | Iterations=2 | Correct=YES | MPI Time=6.0846e-05s | Seq Time=6.8905e-05s | Speedup=1.13245
+P=8 | V=1000 | Iterations=2 | Correct=YES | MPI Time=7.3869e-05s | Seq Time=6.9522e-05s | Speedup=0.941153
+P=1 | V=10000 | Iterations=2 | Correct=YES | MPI Time=0.000702564s | Seq Time=0.000674709s | Speedup=0.960352
+P=2 | V=10000 | Iterations=2 | Correct=YES | MPI Time=0.000516016s | Seq Time=0.000677403s | Speedup=1.31276
+P=4 | V=10000 | Iterations=2 | Correct=YES | MPI Time=0.000445199s | Seq Time=0.000666331s | Speedup=1.4967
+P=8 | V=10000 | Iterations=3 | Correct=YES | MPI Time=0.000648448s | Seq Time=0.000679969s | Speedup=1.04861
+P=1 | V=50000 | Iterations=2 | Correct=YES | MPI Time=0.00344732s | Seq Time=0.00349718s | Speedup=1.01446
+P=2 | V=50000 | Iterations=2 | Correct=YES | MPI Time=0.00228895s | Seq Time=0.00343172s | Speedup=1.49926
+P=4 | V=50000 | Iterations=2 | Correct=YES | MPI Time=0.00256273s | Seq Time=0.00350212s | Speedup=1.36656
+P=8 | V=50000 | Iterations=3 | Correct=YES | MPI Time=0.00266584s | Seq Time=0.00351712s | Speedup=1.31933
+P=1 | V=100000 | Iterations=2 | Correct=YES | MPI Time=0.00729895s | Seq Time=0.00720462s | Speedup=0.987075
+P=2 | V=100000 | Iterations=2 | Correct=YES | MPI Time=0.00477754s | Seq Time=0.00727316s | Speedup=1.52237
+P=4 | V=100000 | Iterations=2 | Correct=YES | MPI Time=0.00565877s | Seq Time=0.00724091s | Speedup=1.27959
+P=8 | V=100000 | Iterations=3 | Correct=YES | MPI Time=0.00517265s | Seq Time=0.00741347s | Speedup=1.4332
